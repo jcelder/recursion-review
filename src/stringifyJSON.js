@@ -23,6 +23,19 @@ var stringifyJSON = function(obj) {
       }
     }
     return stringifiedArray + ']';
+
+  } else if (typeof obj === 'object' && obj !== null) {
+    var stringifiedObj = '{';
+    
+    for (var key in obj) {
+      if (typeof obj[key] === 'undefined' || typeof obj[key] === 'function') {
+        continue;
+      }
+      stringifiedObj = stringifiedObj + stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + ',';
+      
+    }
+    return stringifiedObj.length > 2 ? stringifiedObj.substring(0, stringifiedObj.length - 1) + '}' : stringifiedObj + '}';
+  
   } else {
     return String(obj);
   }
