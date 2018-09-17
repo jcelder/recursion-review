@@ -9,15 +9,15 @@ var getElementsByClassName = function(className) {
   var results = [];
 
   const traverseNodes = (node) => {
-    var list = node.classList
+    var list = node.classList;
     if (list && list.contains(className)) {
       results.push(node);
     }
     // for (let i = 0; i < node.childNodes.length; i++) {
     //   traverseNodes(node.childNodes[i])
     // }
-    node.childNodes.forEach(traverseNodes)
-  }
+    node.childNodes.forEach(traverseNodes);
+  };
   
   traverseNodes(document.body);
   return results;
