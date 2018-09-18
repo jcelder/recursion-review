@@ -1,14 +1,17 @@
 // test cases are described in fixtures.js
 describe('parseJSON', function() {
 
-  it('should match the result of calling JSON.parse', function() {
+  describe('should match the result of calling JSON.parse', function() {
     parseableStrings.forEach(function(test) {
       var result = parseJSON(test);
       var expected = JSON.parse(test);
-      var equality = _.isEqual(result, expected); // why can't we use `===` here?
-      // Replace this line with an `expect` statement that tests
-      // the behavior described by the `it` string
-      expect(equality).to.equal(true);
+      it(`expected ${test} to be parsed`, () => {
+        var equality = _.isEqual(result, expected); // why can't we use `===` here?
+        // Replace this line with an `expect` statement that tests
+        // the behavior described by the `it` string
+        expect(equality).to.equal(true);
+
+      });
     });
   });
 
